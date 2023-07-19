@@ -1,0 +1,109 @@
+.section {
+  padding: 0 10px 0;
+}
+.main {
+  padding: 25px 0 0;
+  background-color: black;
+  color: white;
+}
+
+.card {
+  border-radius: 10px;
+  background-color: #1d1d1f !important;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px;
+  position: relative;
+}
+
+.rem {
+  font-size: 40px;
+}
+
+.total {
+  font-size: 12px;
+  font-weight: 500;
+  color: grey;
+}
+
+.blc-ctn {
+  background-color: #1d1d1f;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px;
+  margin: 0 0 20px;
+}
+
+.balance {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  margin: 0 0 5px;
+}
+
+.graph {
+  margin: 20px 0 0;
+  width: 500px;
+}
+
+.spend {
+  font-size: 40px;
+  font-weight: 600;
+}
+.card-ctn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-two {
+  padding: 10px;
+}
+
+.exp-head {
+  padding: 10px 0 10px;
+}
+
+.today-head {
+  margin: 0 0 20px;
+}
+
+.exp-card-ctn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.exp-name,
+.exp-amount {
+  font-size: 18px;
+  color: white;
+}
+
+.exp-date {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: grey;
+}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  font-weight: 200 !important;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 24px;
+  position: absolute;
+  top: -15px;
+  left: 353px;
+}
+
+.card-img {
+  width: auto;
+  border-radius: 10px !important;
+  margin: 10px 0 30px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+@media screen and (max-width: 800px) {
+  .graph {
+    width: 100%;
+  }
+}

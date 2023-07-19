@@ -1,0 +1,79 @@
+.in {
+  background: #1d1d1f;
+  border: none;
+}
+
+.section {
+  background-color: black;
+  color: white;
+}
+
+input {
+  background: #1d1d1f !important;
+  color: white !important;
+  margin: 0 0 10px !important;
+  border: 2px solid rgb(54, 54, 54) !important;
+}
+
+::-webkit-input-placeholder {
+  color: grey !important;
+}
+
+.button {
+  color: white;
+  border-radius: 5px;
+  padding: 5px 30px 7px;
+
+  border: 1px solid white;
+  background: black;
+}
+
+.btn-ctn {
+  margin: 25px 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.button:hover {
+  border-radius: grey;
+  color: grey !important;
+}
+.modal {
+  position: absolute;
+}
+
+.modal-content {
+  background-color: #1d1d1f !important;
+  padding: 15px;
+}
+
+.close-ctn {
+  display: flex !important;
+  justify-content: end !important;
+  padding: 10px !important;
+  border: none !important;
+}
+
+.btn-pre-close {
+  background-color: none !important;
+  border: none !important;
+}
+
+.options {
+  color: white !important;
+  background-color: red !important;
+}
+
+.nav-bar {
+  padding: 20px 0 0;
+  display: flex;
+  justify-content: end;
+}
+.btn-opt {
+  margin: 0 10px 0;
+}
+
+.fixed {
+  position: fixed !important;
+  z-index: 1000;
+}
