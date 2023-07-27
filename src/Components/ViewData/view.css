@@ -2,7 +2,6 @@
   padding: 0 10px 0;
 }
 .main {
-  padding: 25px 0 0;
   background-color: black;
   color: white;
 }
@@ -43,6 +42,7 @@
 .graph {
   margin: 20px 0 0;
   width: 500px;
+  padding: 5px;
 }
 
 .spend {
@@ -90,9 +90,12 @@
   padding: 5px;
   border-radius: 5px;
   font-size: 24px;
-  position: absolute;
-  top: -15px;
-  left: 353px;
+}
+
+.sub-ctn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card-img {

@@ -8,11 +8,13 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import Navbar from "../Navbar/Navbar";
+import "./limit.css";
 
 function Limit() {
   const [dailyLimit, setDailyLimit] = useState(0);
   const [data, setData] = useState([]);
-  const [id, setId] = useState();
+  // const [id, setId] = useState();
   const db = getFirestore(app);
 
   async function addTotalExp() {
@@ -31,7 +33,7 @@ function Limit() {
     const q1 = query(collection(db, "totalExpense"));
     const unsubscribe3 = onSnapshot(q1, (snapshot) => {
       snapshot.forEach((doc) => {
-        setId(doc.id);
+        // setId(doc.id);
         setData(doc.data().total); //.data() contains the data from the promise
       });
     });
@@ -42,17 +44,27 @@ function Limit() {
 
   return (
     <>
-      <h1>{data}</h1>
-      <p>{id}</p>
-      <h1>{dailyLimit}</h1>
+      <div className="section">
+        <Navbar />
+        <div className="limit-ctn">
+          <p style={{ textAlign: "center", color: "grey" }}>Your Daily Limit</p>
+          <h1 style={{ textAlign: "center", fontSize: "3rem" }}>{data}</h1>
+        </div>
+        {/* <p>{id}</p> */}
 
-      <input
-        type="number"
-        onChange={(e) => {
-          setDailyLimit(e.target.value);
-        }}
-      />
-      <button onClick={addTotalExp}>add expense</button>
+        <input
+          className="form-control"
+          type="number"
+          onChange={(e) => {
+            setDailyLimit(e.target.value);
+          }}
+        />
+        <div className="button-add-ctn">
+          <button onClick={addTotalExp} className="button">
+            Add expense
+          </button>
+        </div>
+      </div>
     </>
   );
 }

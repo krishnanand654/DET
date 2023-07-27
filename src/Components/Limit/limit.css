@@ -1,0 +1,29 @@
+input {
+  background: #1d1d1f !important;
+  color: white !important;
+  margin: 0 0 10px !important;
+  border: 2px solid rgb(54, 54, 54) !important;
+}
+
+::-webkit-input-placeholder {
+  color: grey !important;
+}
+
+.button {
+  color: white;
+  border-radius: 5px;
+  padding: 5px 30px 7px;
+  border: 1px solid white;
+  background: black;
+}
+
+.limit-ctn {
+  padding: 20px;
+  border-radius: 100px;
+}
+
+.button-add-ctn {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 0;
+}

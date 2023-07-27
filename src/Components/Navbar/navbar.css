@@ -1,0 +1,12 @@
+.nav-bar {
+  padding: 20px 0 20px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 30px;
+}
+
+.btn-opt {
+  border: none;
+  background: none;
+}

@@ -38,9 +38,6 @@ input {
   border-radius: grey;
   color: grey !important;
 }
-.modal {
-  position: absolute;
-}
 
 .modal-content {
   background-color: #1d1d1f !important;
@@ -64,16 +61,6 @@ input {
   background-color: red !important;
 }
 
-.nav-bar {
-  padding: 20px 0 0;
-  display: flex;
-  justify-content: end;
-}
 .btn-opt {
   margin: 0 10px 0;
-}
-
-.fixed {
-  position: fixed !important;
-  z-index: 1000;
 }

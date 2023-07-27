@@ -1,12 +1,18 @@
 import { useEffect, useState, useRef } from "react";
 import { app } from "../../Firebase";
-import { collection, getFirestore, deleteDoc, doc } from "firebase/firestore";
+import { Link } from "react-router-dom";
+import {
+  collection,
+  getFirestore,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { onSnapshot, query, where } from "firebase/firestore";
 import { currdate } from "../CurrDate";
 import { Chart } from "chart.js/auto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import "./view.css";
 
 const View = () => {
@@ -102,11 +108,34 @@ const View = () => {
           },
         },
       });
+    } else {
+      if (chartRef.current) {
+        chartRef.current.destroy(); // Destroy the existing chart if it exists
+      }
     }
   }, [data]);
   const today = new Date();
   const options = { weekday: "short", month: "short", day: "numeric" };
   const formattedDate = today.toLocaleDateString("en-US", options);
+
+  const updateStatus = (e) => {
+    const docNewRef = doc(db, "dailyExpense", e.target.value);
+
+    const sts = {
+      status: false,
+    };
+
+    updateDoc(docNewRef, sts)
+      // eslint-disable-next-line no-unused-vars
+      .then((docRef) => {
+        console.log(
+          "A New Document Field has been added to an existing document"
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -114,6 +143,7 @@ const View = () => {
         <div className="card-ctn">
           <img className="card-img" src="/card.png" />
         </div>
+
         <div className="section">
           <div className="today-head">
             <h1>{formattedDate}</h1>
@@ -135,6 +165,21 @@ const View = () => {
               </span>
             </div>
           </div>
+          <div className="blc-ctn">
+            <p className="balance">Pending Due</p>
+            {data.map((element) => (
+              <>
+                <span className="spend">
+                  {element.debt}
+                  <span style={{ fontWeight: "500" }}>₹ {element.amount}</span>
+                </span>
+              </>
+            ))}
+            <Link to="https://gpay://">
+              <button>Pay</button>
+            </Link>
+          </div>
+
           <div className="card">
             <div className="graph">
               <canvas id="acquisitions1"></canvas>
@@ -146,30 +191,45 @@ const View = () => {
           <h2 className="exp-head">Daily Expense</h2>
 
           {data.map((element) => (
-            <div
-              key={element.id}
-              className="card"
-              style={{ padding: "10px", margin: "0 0 10px" }}
-            >
-              <div className="exp-card-ctn">
-                <p className="exp-name">
-                  {element.expense.charAt(0).toUpperCase() +
-                    element.expense.slice(1)}
-                </p>
-                <p className="exp-amount">
-                  <span style={{ fontWeight: "400" }}>₹</span> {element.amount}
-                </p>
+            <>
+              <div
+                key={element.id}
+                className="card"
+                style={{ padding: "10px", margin: "0 0 10px" }}
+              >
+                <div className="exp-card-ctn">
+                  <p className="exp-name">
+                    {element.expense.charAt(0).toUpperCase() +
+                      element.expense.slice(1)}
+                  </p>
+                  <p className="exp-amount">
+                    <span style={{ fontWeight: "400" }}>₹</span>{" "}
+                    {element.amount}
+                  </p>
+                </div>
+                <div className="sub-ctn">
+                  <p className="exp-date">{element.date}</p>
+
+                  <p className="exp-date">
+                    {element.status == true ? (
+                      <>
+                        <button onClick={updateStatus} value={element.id}>
+                          Marks as paid
+                        </button>
+                      </>
+                    ) : (
+                      "paid"
+                    )}
+                  </p>
+                  <button className="btn" onClick={() => del(element.id)}>
+                    <FontAwesomeIcon
+                      icon={faTrashCan}
+                      style={{ color: "#ff3333" }}
+                    />
+                  </button>
+                </div>
               </div>
-              <p className="exp-date">{element.date}</p>
-              <div style={{ display: "flex", justifyContent: "end" }}>
-                <button className="btn" onClick={() => del(element.id)}>
-                  <FontAwesomeIcon
-                    icon={faCircleXmark}
-                    style={{ color: "#fafafa" }}
-                  />
-                </button>
-              </div>
-            </div>
+            </>
           ))}
         </div>
       </div>
